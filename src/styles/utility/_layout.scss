@@ -1,0 +1,18 @@
+//
+// Layout
+// --------------------------------------------------
+// Specific to project -- ex. home page wrapper, contact wrapper, blog wrapper etc
+//
+.app-container {
+  min-height: 100vh;
+  position: relative;
+
+  @include theme {
+    background-color: variable("background-color");
+  }
+}
+
+html,
+body {
+  margin: 0;
+}
