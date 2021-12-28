@@ -6,8 +6,8 @@ pipeline {
                 script {
                     env.dockerHome = "${tool 'myDocker'}"
                     env.PATH="${env.dockerHome}/bin:${env.PATH}"
-                    sh 'chmod 777 /var/run/docker.sock'
                     sh 'docker -v'
+                    sh 'sudo usermod -a -G docker $USER'
                 }
             }
         }
