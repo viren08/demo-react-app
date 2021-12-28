@@ -6,7 +6,7 @@ pipeline {
                 script {
                     env.dockerHome = "${tool 'myDocker'}"
                     env.PATH="${env.dockerHome}/bin:${env.PATH}"
-                    sh 'docker --v'
+                    sh 'docker -v'
                 }
             }
         }
