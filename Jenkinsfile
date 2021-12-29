@@ -7,20 +7,17 @@ pipeline {
                     env.dockerHome = "${tool 'myDocker'}"
                     env.PATH="${env.dockerHome}/bin:${env.PATH}"
                     sh 'docker -v'
-                    sh 'sudo usermod -a -G docker $USER'
+                    //sh 'sudo usermod -a -G docker $USER'
                 }
             }
         }
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:16.13.1-alpine'
-                    // Run the container on the node specified at the top-level of the Pipeline, in the same workspace, rather than on a new node entirely:
-                    reuseNode true
-                }
-            }
             steps {
-                sh 'node --version'
+                script {
+                    docker.image('maven:3.3.3-jdk-8').inside {             
+                    sh 'mvn --version'
+                    }
+                }
             }
         }
     }
