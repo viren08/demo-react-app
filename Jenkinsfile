@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        /*stage('Initialize'){
+        stage('Initialize'){
             steps{
                 script {
                     env.dockerHome = "${tool 'myDocker'}"
@@ -9,7 +9,7 @@ pipeline {
                     sh 'docker -v'
                 }
             }
-        }*/
+        }
         stage('Build') {
             steps {
                 script {
