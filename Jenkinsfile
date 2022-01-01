@@ -1,16 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Initialize'){
+        /*stage('Initialize'){
             steps{
                 script {
                     env.dockerHome = "${tool 'myDocker'}"
                     env.PATH="${env.dockerHome}/bin:${env.PATH}"
                     sh 'docker -v'
-                    //sh 'sudo usermod -a -G docker $USER'
                 }
             }
-        }
+        }*/
         stage('Build') {
             steps {
                 script {
