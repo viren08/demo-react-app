@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     docker.image('node:16.13.1-alpine').inside {             
-                        sh 'npm install --only=dev'
+                        sh 'npm install'
                         sh 'npm test'
                     }
                 }
