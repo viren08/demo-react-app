@@ -7,7 +7,7 @@ pipeline {
                     docker.image('node:16.13.1-alpine').inside {             
                         sh 'npm install'
                         sh 'npm test'
-                        sh 'npm start'
+                        sh 'npm run build'
                     }
                 }
             }
