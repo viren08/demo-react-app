@@ -8,13 +8,9 @@ pipeline {
                         sh 'npm install'
                         sh 'npm test'
                         //sh 'npm run build'
+                        sh 'npm install typescript'
                     }
                 }
-            }
-        }
-        stage('Install Typescript') {
-            steps {
-                sh 'npm install typescript'
             }
         }
         stage('Code scan Sonarqube') {
