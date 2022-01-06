@@ -12,15 +12,20 @@ pipeline {
                 }
             }
         }
+        stage('Install Typescript') {
+            steps {
+                sh 'npm install typescript'
+            }
+        }
         stage('Code scan Sonarqube') {
             steps {
                 script {
                     def scannerHome = tool 'sonar';
                     withSonarQubeEnv("sonar") {
                         sh """${tool("sonar")}/bin/sonar-scanner \
-                        -Dsonar.projectKey=test-node-js \
+                        -Dsonar.projectKey=react-app \
                         -Dsonar.sources=. \
-                        -Dsonar.projectName=test-node-js \
+                        -Dsonar.projectName=react-app \
                         -Dsonar.projectVersion=1.0 """
                     }
                 } 
