@@ -8,23 +8,16 @@ pipeline {
                         sh 'npm install'
                         sh 'npm test'
                         //sh 'npm run build'
-                        sh 'npm install typescript'
+                        sh 'npm run sonar'                      
+                       /* withSonarQubeEnv("sonar") {
+                            sh """${tool("sonar")}/bin/sonar-scanner \
+                            -Dsonar.projectKey=react-app \
+                            -Dsonar.sources=. \
+                            -Dsonar.projectName=react-app \
+                            -Dsonar.projectVersion=1.0 """
+                        }*/
                     }
                 }
-            }
-        }
-        stage('Code scan Sonarqube') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonar';
-                    withSonarQubeEnv("sonar") {
-                        sh """${tool("sonar")}/bin/sonar-scanner \
-                        -Dsonar.projectKey=react-app \
-                        -Dsonar.sources=. \
-                        -Dsonar.projectName=react-app \
-                        -Dsonar.projectVersion=1.0 """
-                    }
-                } 
             }
         }
         /*stage('docker build/push') {
