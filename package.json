@@ -8,6 +8,7 @@
     "watch": "npm run build -- --watch",
     "start": "run-p eslint:watch \"start:dev -- --env APP_ENV={1} --env port={2}\" --",
     "test": "run-s eslint jest",
+    "sonar": "sonar-scanner",
     "test:watch": "run-p eslint:watch jest:watch",
     "start:dev": "webpack serve --mode development --env mode=development",
     "eslint": "node_modules/.bin/eslint src --ext js,jsx",
