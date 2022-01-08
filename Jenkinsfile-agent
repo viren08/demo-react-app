@@ -20,6 +20,7 @@ pipeline {
       }
       stage('SonarQube analysis') {
          steps {
+         sh "echo $JAVA_HOME"
                withSonarQubeEnv("sonar") {
                             sh """${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=react-app \
