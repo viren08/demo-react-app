@@ -1,0 +1,46 @@
+pipeline {
+    agent none
+
+    stages {
+        stage('Install') { 
+
+            agent { docker 'node:16.13.1-alpine'     }
+            steps {
+                sh 'npm install' 
+            }
+        }
+        stage('Test') { 
+            agent { docker 'node:16.13.1-alpine'      }
+            steps {
+
+                sh 'npm test' 
+            }
+        }
+
+        stage('Build') { 
+            agent { docker 'node:16.13.1-alpine'      }
+            steps {
+
+                sh 'npm run build' 
+            }
+        }
+
+        stage('Sonarqube analysis') {
+           agent {     docker   'maven:3-alpine'   }
+
+            steps {
+
+                script {
+                    scannerHome = tool 'sonar';
+
+                }
+                withSonarQubeEnv('sonar') {
+                        sh "${scannerHome}/bin/sonar-scanner" 
+                }
+
+            }
+        }
+
+
+    }
+}
