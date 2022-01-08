@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://ghcr.io', 'vani0123') {
-                        def app = docker.build("vani-docker/docker-nodejs-demo:1.0.0-SNAPSHOT", '.').push()
+                        def app = docker.build("vani0123/docker-nodejs-demo:1.0.0-SNAPSHOT", '.').push()
                     }
                     //dockerImage = docker.build("vani-docker/docker-nodejs-demo:1.0.0-SNAPSHOT", '.')
                 }
