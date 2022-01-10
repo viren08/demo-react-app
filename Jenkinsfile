@@ -1,30 +1,29 @@
 pipeline {
     agent any
     stages {
-     /*   stage('Build') {
+        stage('Build and Test') {
             steps {
                 script {
                     docker.image('node:16.13.1-alpine').inside {             
                         sh 'npm install'
                         sh 'npm test'                     
-                        withSonarQubeEnv("sonar") {
+                       /* withSonarQubeEnv("sonar") {
                             sh """${tool("sonar")}/bin/sonar-scanner \
                             -Dsonar.projectKey=react-app \
                             -Dsonar.sources=. \
                             -Dsonar.projectName=react-app \
                             -Dsonar.projectVersion=1.0 """
-                        }
+                        }*/
                     }
                 }
             }
-        }*/
-        stage('docker build/push') {
+        }
+        stage('docker build and push') {
             steps {
                 script {
                     docker.withRegistry('https://ghcr.io', 'vani0123') {
                         def app = docker.build("vani0123/docker-nodejs-demo:1.0.0-SNAPSHOT", '.').push()
                     }
-                    //dockerImage = docker.build("vani-docker/docker-nodejs-demo:1.0.0-SNAPSHOT", '.')
                 }
             }                                    
         }
