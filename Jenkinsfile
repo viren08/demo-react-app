@@ -18,7 +18,7 @@ pipeline {
                 }
             }
         }
-        stage('docker build and push') {
+        stage('Docker build and push') {
             steps {
                 script {
                     docker.withRegistry('https://ghcr.io', 'vani0123') {
