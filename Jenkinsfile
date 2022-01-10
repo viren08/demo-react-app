@@ -4,7 +4,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
-                    docker.image('node:16.13.1-alpine').inside {             
+                    docker.image('node:12.22.8').inside {             
                         sh 'npm install'
                         sh 'npm test'                     
                        /* withSonarQubeEnv("sonar") {
