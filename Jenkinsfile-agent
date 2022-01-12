@@ -6,10 +6,8 @@ pipeline {
    }
    environment {
       scannerHome = tool 'sonar'
+      JAVA_HOME = "/opt/java/openjdk"
    }
-    tools {
-        jdk 'jdk11'
-    }
    stages {
       stage('Build') {
          steps {
@@ -23,7 +21,6 @@ pipeline {
       }
       stage('SonarQube analysis') {
          steps {
-         sh "echo $JAVA_HOME"
                             sh """${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=react-app \
                             -Dsonar.sources=. \
