@@ -7,13 +7,6 @@ pipeline {
                     docker.image('node:12.22.8').inside {             
                         sh 'npm install'
                         sh 'npm test'                     
-                       /* withSonarQubeEnv("sonar") {
-                            sh """${tool("sonar")}/bin/sonar-scanner \
-                            -Dsonar.projectKey=react-app \
-                            -Dsonar.sources=. \
-                            -Dsonar.projectName=react-app \
-                            -Dsonar.projectVersion=1.0 """
-                        }*/
                     }
                 }
             }
