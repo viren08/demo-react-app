@@ -5,14 +5,12 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
-                   // docker.image('node:12.22.8').inside {             
                         sh 'npm install'
                         sh 'npm test'                     
-                   // }
                 }
             }
         }
-        stage('Sonar scan') {
+        stage('Sonar Analysis') {
             steps {
                 script {
                         withSonarQubeEnv("SonarQube") {
