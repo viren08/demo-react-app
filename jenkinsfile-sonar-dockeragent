@@ -21,6 +21,10 @@ pipeline {
                             -Dsonar.projectName=react-app \
                             -Dsonar.projectVersion=1.0 """
                         }
+                        def qualitygate = waitForQualityGate()
+                        if (qualitygate.status != "OK") {
+                            error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+                        }
                 }
             }                                    
         }
