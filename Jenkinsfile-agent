@@ -6,7 +6,9 @@ pipeline {
    }
    environment {
       scannerHome = tool 'sonar'
-      JAVA_HOME = "/opt/java/openjdk"
+   }
+   tools {
+        java 'jdk11'
    }
    stages {
       stage('Build') {
