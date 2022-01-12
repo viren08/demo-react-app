@@ -12,10 +12,6 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'npm install' 
-            }
-        }
-       stage('Sonarqube analysis') {
-            steps {
                 script {
                     scannerHome = tool 'sonar';
                 }
@@ -26,7 +22,6 @@ pipeline {
                             -Dsonar.projectName=react-app \
                             -Dsonar.projectVersion=1.0 """
                         }
-
             }
         }
     }
