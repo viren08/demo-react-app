@@ -17,14 +17,6 @@ pipeline {
             }
         }
 
-        stage('Build') { 
-            agent { docker 'node:16.13.1-alpine'      }
-            steps {
-
-                sh 'npm run build' 
-            }
-        }
-
         stage('Sonarqube analysis') {
            agent {     docker   'maven:3.8.1-adoptopenjdk-11'   }
 
