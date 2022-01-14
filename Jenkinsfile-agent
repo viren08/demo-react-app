@@ -7,9 +7,6 @@ pipeline {
    environment {
       scannerHome = tool 'sonar'
    }
-   tools {
-        jdk 'JDK11'
-   }
    stages {
       stage('Build') {
          steps {
